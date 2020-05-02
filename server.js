@@ -7,8 +7,9 @@ const port = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/api/hello', (req, res) => {
-  res.send({ express: 'Hello From Express' });
+// TODO: implement real login
+app.get('/api/isLoggedIn', (req, res) => {
+  res.send({ isLoggedIn: true });
 });
 
 app.post('/api/world', (req, res) => {
