@@ -87,7 +87,7 @@ export default function PersistentDrawerLeft() {
           <Divider />
           <List>
             {routes.map(({text, url}, index) => (
-              <Link to={url}>
+              <Link to={url} key={url}>
                 <ListItem button key={text}>
                   <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                   <ListItemText primary={text} />
@@ -104,20 +104,18 @@ export default function PersistentDrawerLeft() {
           })}
         >
           <div className={classes.drawerHeader} />
-          <Typography paragraph>
-            <Switch>
-              {routes.map((route, index) => (
-                  // Render more <Route>s with the same paths as
-                  // above, but different components this time.
-                  <Route
-                      key={index}
-                      path={route.url}
-                      exact={route.exact}
-                      children={<route.children />}
-                  />
-              ))}
-            </Switch>
-          </Typography>
+          <Switch>
+            {routes.map((route, index) => (
+                // Render more <Route>s with the same paths as
+                // above, but different components this time.
+                <Route
+                    key={index}
+                    path={route.url}
+                    exact={route.exact}
+                    children={<route.children />}
+                />
+            ))}
+          </Switch>
         </main>
       </div>
     </Router>

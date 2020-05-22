@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Dashboard from './components/layout/dashboard';
 import Login from './components/layout/login';
-import authenticate from './service/Authentication';
+import callApi from './service/Api';
 
 class App extends Component {
   state = {
@@ -9,7 +9,7 @@ class App extends Component {
   };
   
   componentDidMount() {
-    authenticate()
+    callApi('/api/isLoggedIn')
       .then(res => this.setState({ isLoggedIn: res.isLoggedIn }))
       .catch(err => console.log(err));
   }
